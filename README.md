@@ -19,8 +19,7 @@ The dataset seems to be targeted toward anyone with an interest in global and me
 5. Which years were suicide rates most prevalent?
 
 ### Technical Description
-The data set is a `.csv` file. We will be reading it in with the `read.csv` function in R. To wrangle the data, we will filter the data set to catergorize information by country, age, weatlh of country, sex, and generation. 
 
 Some of the libraries that we plan on using are `leaflet` and `plotly` for visualization, `shiny` will be used to create the shiny webpage, `ggplot` will also be used to graph the data. 
 
-In this report, we anticipate to have challenges in the data wrangling, creating widgets in shiny, and sorting through errors. 
+In this report, we anticipate to have challenges in the data wrangling, creating widgets in shiny, and sorting through errors. In regards to 
