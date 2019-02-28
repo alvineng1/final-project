@@ -2,11 +2,11 @@
 # INFO 201 Final Project
 
 _by:
-Bryce Fukuda, Steven Hsieh,  Alvine Ngouonga, Macey Schallery_
+[Bryce Fukuda](https://github.com/fukudab/), [Steven Hsieh](https://github.com/hsiehsc),  [Alvine Ngouonga](https://github.com/alvineng1/), [Macey Schallert](https://github.com/macerose/)_
 
 ## Project Description
 ### About this dataset
-The dataset we will be working with is a [suicide rate overview from 1965-2016.](https://www.kaggle.com/russellyates88/suicide-rates-overview-1985-to-2016).
+The dataset we will be working with is a [suicide rate overview from 1965-2016](https://www.kaggle.com/russellyates88/suicide-rates-overview-1985-to-2016).
 
 The information was collected by russellyates88, and sourced by the [World Bank](http://www.worldbank.org/). The dataset is hosted on [kaggle](https://www.kaggle.com).
 
