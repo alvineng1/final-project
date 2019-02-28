@@ -23,4 +23,4 @@ The data set is a `.csv` file. We will be reading it in with the `read.csv` func
 
 Some of the libraries that we plan on using are `leaflet` and `plotly` for visualization, `shiny` will be used to create the shiny webpage, `ggplot` will also be used to graph the data. 
 
-In this report, we anticipate to have challenges in the data wrangling in regards to the age groups, because the data sets have 
+In this report, we anticipate to have challenges in the data wrangling, creating widgets in shiny, and sorting through errors. 
