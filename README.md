@@ -20,6 +20,11 @@ The dataset seems to be targeted toward anyone with an interest in global and me
 
 ### Technical Description
 
-Some of the libraries that we plan on using are `leaflet` and `plotly` for visualization, `shiny` will be used to create the shiny webpage, `ggplot` will also be used to graph the data. 
 
-In this report, we anticipate to have challenges in the data wrangling, creating widgets in shiny, and sorting through errors. In regards to 
+The dataset that we acquired from Kaggle is a `.csv` file, so we will read in the data with the `read.csv` function in `R`. In order to wrangle the data, we will need to organize the data by country, age, wealth, generation, and sex. Some of the libraries that we plan on using are `leaflet` and `plotly` for visualization, `shiny` will be used to create the shiny webpage, `ggplot` will also be used to graph the data. 
+
+Potential challenges 
+
+1. Data wrangling: The data is 30,000 columns long and we do not know if the data provided is consistent throughout each column. 
+2. Shiny: We haven't had a lot of opportunities to work with `shiny` yet, so we anticipate to have issues with getting the website to work 
+3. Collaboration: Because of the pulling and pushing in github, we are afraid that we might lose some code
