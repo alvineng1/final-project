@@ -13,3 +13,8 @@ The dataset we will be working with is a [suicide rate overview from 1965-2016.]
 The information was collected by russellyates88, and sourced by the [World Bank](http://www.worldbank.org/). The dataset is hosted on [kaggle](https://www.kaggle.com).
 
 ### Technical Description
+The data set is a `.csv` file. We will be reading it in with the `read.csv` function in R. To wrangle the data, we will filter the data set to catergorize information by country, age, weatlh of country, sex, and generation. 
+
+Some of the libraries that we plan on using are `leaflet` and `plotly` for visualization, `shiny` will be used to create the shiny webpage, `ggplot` will also be used to graph the data. 
+
+In this report, we anticipate to have challenges in the data wrangling in regards to the age groups, because the data sets have 
