@@ -25,6 +25,6 @@ The dataset that we acquired from Kaggle is a `.csv` file, so we will read in th
 
 Potential challenges 
 
-1. Data wrangling: The data is 30,000 columns long and we do not know if the data provided is consistent throughout each column. 
+1. Data wrangling: The data is 30,000 rows long and we do not know if the data provided is consistent throughout each column. 
 2. Shiny: We haven't had a lot of opportunities to work with `shiny` yet, so we anticipate to have issues with getting the website to work 
 3. Collaboration: Because of the pulling and pushing in github, we are afraid that we might lose some code
