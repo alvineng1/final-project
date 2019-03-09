@@ -22,16 +22,53 @@ register_google(key = google_api)
 
 raw_data[, c("long", "lat")] <- geocode(raw_data$ï..country)
 
+# save raw_data df 
 
-  
-  
+write.csv(raw_data, "master_df_lat_long.csv", row.names = F)
 
+# read in new df 
+
+data <- read.csv("data/master_df_lat_long.csv", stringsAsFactors = F)
+
+# create a map that takes in the raw data and plots suicides 
+
+
+
+Interactive_map <- data %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addMarkers(lng = data$long, lat = data$lat)
+
+
+data %>% 
+  filter(year == 2000) %>% 
+  group_by(ï..country) %>% 
+  summarise(
+    sum_suicide = sum(suicides_no), 
+    long = max(long), 
+    lat = max(lat)
+  )
   
-geocode("Ameica")
   
+test <- function(df, year, country){
+  test <- df %>% 
+    filter(year == year) %>% 
+    group_by(country == country) %>% 
+    summarise(
+      sum_suicide = sum(suicides_no), 
+      long = max(long), 
+      lat = max(lat) 
+    )
+  map <- test %>% 
+    leaflet() %>% 
+    addTiles() %>% 
+    addMarkers(lng = data$long, lat = data$lat)
+  return(map)
+} 
   
-  
-  
+test(data, 2000, "China")
+
+
   
 # 3. Map (Bryce and Alvine)
 # >> filter by year 
