@@ -34,49 +34,4 @@ data <- read.csv("data/master_df_lat_long.csv", stringsAsFactors = F)
 
 
 
-Interactive_map <- data %>% 
-  leaflet() %>% 
-  addTiles() %>% 
-  addMarkers(lng = data$long, lat = data$lat)
 
-
-what <- data %>% 
-  filter(year == 2000) %>% 
-  group_by(ï..country) %>% 
-  summarise(
-    sum_suicide = sum(suicides_no), 
-    long = max(long), 
-    lat = max(lat)
-  )
-
-
-  
-test <- function(df, year){
-  test <- df %>% 
-    filter(year == year) %>% 
-    group_by(ï..country) %>% 
-    summarise(
-      suicide_num = sum(suicides_no), 
-      long = max(long), 
-      lat = max(lat) 
-    )
-  map <- test %>% 
-    leaflet() %>% 
-    addTiles() %>% 
-    addMarkers(lng = data$long, lat = data$lat, 
-               popup = paste0(
-                 test$ï..country, "<br>", 
-                 year,"<br>", 
-                 test$suicide_num, "<br>"
-               ), 
-               clusterOptions = markerClusterOptions())
-  return(map)
-} 
-  
-test(data, 2000)
-
-geocode("singapore")
-  
-# 3. Map (Bryce and Alvine)
-# >> filter by year 
-# >> gradient of map based on suicide rates
