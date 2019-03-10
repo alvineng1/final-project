@@ -27,7 +27,18 @@ map <- tabPanel(
         value = 1985
       )
     ),
-    mainPanel(leafletOutput("plot", height = "500px"))
+    mainPanel(
+      h3(strong("Map of Suicides: 1985-2016"), align = "center"), 
+      leafletOutput("plot", height = "500px"),
+      p(" "), 
+      p("This map shows the amount of suicides from different countries around 
+        the world from 1985 to 2016. The area of the circles represent the 
+        relative amount of suicides in that country compared to other countries 
+        that year."), 
+      p(strong("To use this map:"), "use the slider to select the year that you are 
+        interested in. Keep in mind that this data set did not have data for some countries
+        and for certain years.")
+      )
   )
 )
 
