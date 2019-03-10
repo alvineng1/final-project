@@ -40,7 +40,7 @@ Interactive_map <- data %>%
   addMarkers(lng = data$long, lat = data$lat)
 
 
-data %>% 
+what <- data %>% 
   filter(year == 2000) %>% 
   group_by(ï..country) %>% 
   summarise(
@@ -48,27 +48,34 @@ data %>%
     long = max(long), 
     lat = max(lat)
   )
+
+
   
-  
-test <- function(df, year, country){
+test <- function(df, year){
   test <- df %>% 
     filter(year == year) %>% 
-    group_by(country == country) %>% 
+    group_by(ï..country) %>% 
     summarise(
-      sum_suicide = sum(suicides_no), 
+      suicide_num = sum(suicides_no), 
       long = max(long), 
       lat = max(lat) 
     )
   map <- test %>% 
     leaflet() %>% 
     addTiles() %>% 
-    addMarkers(lng = data$long, lat = data$lat)
+    addMarkers(lng = data$long, lat = data$lat, 
+               popup = paste0(
+                 test$ï..country, "<br>", 
+                 year,"<br>", 
+                 test$suicide_num, "<br>"
+               ), 
+               clusterOptions = markerClusterOptions())
   return(map)
 } 
   
-test(data, 2000, "China")
+test(data, 2000)
 
-
+geocode("singapore")
   
 # 3. Map (Bryce and Alvine)
 # >> filter by year 
