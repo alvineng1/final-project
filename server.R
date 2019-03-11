@@ -1,4 +1,7 @@
 library(dplyr)
+library(leaflet)
+library(ggplot2)
+library(shiny)
 
 source("./scripts/map_alvine.R")
 source("ui.R")
@@ -9,8 +12,9 @@ shinyServer(function(input, output) {
       data, input$years
     ))
   })
+  
+  
 })
-
 
 
 
@@ -29,3 +33,11 @@ shinyServer(function(input, output) {
 # 
 # 
 # test(master, 2000)
+
+
+#output$gender_plot <- renderPlot({
+#ggplot(data) +
+#    geom_bar(aes(x = sex, y = suicide_no)) +
+#    coord_polar("y")
+
+#})
