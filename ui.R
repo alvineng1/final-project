@@ -53,7 +53,20 @@ map <- tabPanel(
 
 ############################### Gender ############################### 
 
-#gender <- tabPanel()
+# gender <- tabPanel(
+#  "Map of Gender",
+#  titlePanel("Gender Plot"),
+#  sidebarLayout(
+#    sidebarPanel(
+#      selectInput("country", label = h3("Select a Country"),
+#                  choices = list("choice 1" = "Albania" ),
+#                  selected = "Albania"),
+#      hr(),
+#      fluidRow(column(3, verbatimTextOutput("country")))
+      
+#    )
+#  )
+#)
 
 
 
