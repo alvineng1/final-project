@@ -29,3 +29,6 @@ shinyServer(function(input, output) {
 # 
 # 
 # test(master, 2000)
+
+
+?addPolygons
