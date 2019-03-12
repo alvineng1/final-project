@@ -1,4 +1,6 @@
 library(countrycode) # convert country names into codes
+library(tidyr)
+
 
 # Making a map function, dataframe and year variable as parameters
 map_function <- function(df, year_var){

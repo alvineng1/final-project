@@ -7,7 +7,20 @@ library(shinythemes)
 
 
 ############################ Introduction ############################ 
-#introduction <- tabPanel()
+introduction <- tabPanel(
+  "Introduction", 
+  titlePanel("Introduction"), 
+  mainPanel(
+    h3("Information about Suicide"), 
+    p("According to the WHO, close to 800,000 people die due to 
+      suicide each year. Suicide drastically impacts families, communities,
+      and the people who also commit suicides. Suicide can occur throughout 
+      a lifetime, but mainly impacts 15-29 year olds globally in 2016. 
+      As a non discriminatory issue, it impacts both low and high income countries, 
+      which is why it is such a huge public health concern.")
+    
+  )
+)
 
 
 
@@ -29,7 +42,7 @@ map <- tabPanel(
     ),
     mainPanel(
       h3(strong("Map of Suicides: 1985-2016"), align = "center"), 
-      leafletOutput("plot", height = "500px"),
+      plotlyOutput("plot"),
       p(" "), 
       p("This map shows the amount of suicides from different countries around 
         the world from 1985 to 2016. The area of the circles represent the 
@@ -47,7 +60,24 @@ map <- tabPanel(
 
 ############################# Generation ############################# 
 
-#generation <- tabPanel()
+generation <-  tabPanel(
+  "Generation",
+  titlePanel("Something by generation"),
+  # Creating sidebar layout
+  sidebarLayout(
+    # Sidebar Panel
+    sidebarPanel(
+      # Input to select variable to map
+      selectInput('text', "Select Country", country_list, selectize=TRUE),
+      sliderInput("slider_year", label = h3("Select Year"), min = 1985, 
+                  max = 2016, value = 2000, sep = "")
+    ),
+    # Main Panel to Show Scatter Plot
+    mainPanel(
+      plotlyOutput("generation")
+    )
+  )
+)
 
 
 
@@ -66,9 +96,9 @@ map <- tabPanel(
 shinyUI(navbarPage(
   theme = shinytheme("simplex"), 
   "Suicides Around the World",
-  # introduction, 
-  map 
-  # generation,
+  introduction, 
+  map,
+  generation
   # gender, 
   # about_us
 ))
