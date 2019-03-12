@@ -2,27 +2,12 @@ library(countrycode) # convert country names into codes
 library(tidyr)
 
 
+
 # Making a map function, dataframe and year variable as parameters
 map_function <- function(df, year_var){
-  # Read dataset that has country data
-  # From https://github.com/datasets/country-codes/blob/master/data/country-codes.csv
-  countries_full <-  read.csv(
-    "data/countries.csv", na.strings = c("", "NA"), stringsAsFactors = F
+  countries_list <-  read.csv(
+    "data/countries_list.csv", stringsAsFactors = F
   )
-  
-  # Add country code to country dataset
-  countries_full$code <- countrycode(
-    countries_full$official_name_en, 'country.name', 'iso3c'
-  )
-  
-  # rename columns of country dataset (more user-friendly)
-  countries_list_raw <- countries_full %>%
-    select(code, official_name_en)
-  colnames(countries_list_raw)[2] <- "countries"
-  
-  #remove blank rows of insignificant countries
-  countries_list <- drop_na(countries_list_raw)
-  
   # make a dataset grouped by country and summing up suicides
   test <- df %>% 
     filter(year == year_var) %>% 
