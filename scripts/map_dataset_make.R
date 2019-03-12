@@ -5,6 +5,7 @@ countries_full <-  read.csv(
   "data/countries.csv", na.strings = c("", "NA"), stringsAsFactors = F
 )
 
+
 # Add country code to country dataset
 countries_full$code <- countrycode(
   countries_full$official_name_en, 'country.name', 'iso3c'

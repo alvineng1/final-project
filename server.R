@@ -13,7 +13,7 @@ shinyServer(function(input, output) {
   # map 
   output$plot <- renderPlotly({
     return(map_function(
-      data, input$years
+      master_data, input$years
     ))
   })
   # bar plot 
