@@ -6,14 +6,17 @@ library(shiny)
 source("./scripts/map_plotly.R")
 source("./generation/generation/server.R")
 source("ui.R")
+# source("./scatter/server.R")
 
 
 shinyServer(function(input, output) {
+  # map 
   output$plot <- renderPlotly({
     return(map_function(
       data, input$years
     ))
   })
+  # bar plot 
   country_plot <- reactive ({master %>% 
       filter(year == input$slider_year, country == input$text) %>% 
       group_by(generation) %>% 
@@ -31,7 +34,15 @@ shinyServer(function(input, output) {
              yaxis = list(title = "Total Suicides"))
     print(p)
   })
-  
+  # scatter 
+  # gdp_data <- reactive({good %>% 
+  #     filter(str_detect(country.year, input$country))
+  # })
+  # output$scatter <- renderPlotly({
+  #   p <- plot_ly(gdp_data(), x=~suicide_rate, y=~gdp_per_capita....)
+  #   print(p)
+  # })
+  # 
 })
 
 
