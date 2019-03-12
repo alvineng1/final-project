@@ -139,7 +139,25 @@ scatter <- tabPanel(
 
 ############################## About Us ##############################
 
-#about_us <- tabPanel()
+about_project <- tabPanel(
+  "About us",
+  tags$h4(strong("About US"), align = "center"), 
+  tags$p("This report was created by the students in INFO 201 at the 
+           University of Washington. It was created by", strong("Alvine Ngouonga, 
+                                                                Bryce Fukuda, 
+                                                                Macey Schallert, 
+                                                                and Steven Hsieh."), align = "center"), 
+  tags$p("Alvine is a sophomore at the University studying Medical Anthropolgy 
+         and Global Health. She is minoring in Informatics and Bioethics. Upon graduating
+         she hopes to pursue a career in medicine and/or global health to study women's reproductive
+         health.", align = "center"),
+  # tags$img(src = "http://tinyurl.com/y6grzsc6", height = "400 px", align = "center"),
+  # tags$img(src = "http://tinyurl.com/yylsa9cx", height = "200 px"), 
+  # tags$img(src = "http://tinyurl.com/y6bbhkoo", height = "200 px"), 
+  # tags$img(src = "http://tinyurl.com/y2m2n76j", height = "200 px")
+  ) 
+
+
 
 ############################## Shiny UI ##############################
 
@@ -150,8 +168,8 @@ shinyUI(navbarPage(
   introduction, 
   map,
   generation,
-  scatter
-  # about_us
+  scatter,
+  about_project
 ))
 
 

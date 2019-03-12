@@ -42,7 +42,7 @@ shinyServer(function(input, output) {
   #   p <- plot_ly(gdp_data(), x=~suicide_rate, y=~gdp_per_capita....)
   #   print(p)
   # })
-  # 
+   
 })
 
 
