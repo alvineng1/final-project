@@ -10,23 +10,23 @@ library(shinythemes)
 introduction <- tabPanel(
   "Introduction", 
   mainPanel(
-    tags$h4(strong("Information about Suicide"), class = "header"), 
+    tags$h4(strong("Information about Suicide")), 
     tags$p("According to the WHO, close to 800,000 people die due to 
       suicide each year. Suicide drastically impacts families, communities,
       and the people who also commit suicides. Suicide can occur throughout 
       a lifetime, but mainly impacts 15-29 year olds globally in 2016. 
       As a non discriminatory issue, it impacts both low and high income countries, 
-      which is why it is such a huge public health concern.", class = "para1"),
-    tags$h4(strong("Information about the Dataset"), class = "header"), 
+      which is why it is such a huge public health concern."),
+    tags$h4(strong("Information about the Dataset"), 
     tags$p("The information was collected by russellyates88, 
             and sourced by the World Bank. The dataset is hosted on Kaggle. The 
             data set is targeted towards indivals who have an interest in global
             and mental health. This data set can help provide numerical evidence to 
-            support research on mental health.", class = "para2"), 
-    tags$h4(strong("Questions that can be asked"), class = "header"), 
+            support research on mental health."), 
+    tags$h4(strong("Questions that can be asked")), 
     tags$p("The data set is 30,000 rows long and summarizes information by 
-            country, year, age group, generation, and GDP.", class = "para2"), 
-      tags$ol(class = "para2", 
+            country, year, age group, generation, and GDP."), 
+      tags$ol( 
               tags$li("Which countries experience the highest rates of suicide?"), 
               tags$li("How do economic and development indicators link to suicide rates?"), 
               tags$li("What are the sex differences when it comes to suicide rates?"), 
@@ -49,7 +49,7 @@ introduction <- tabPanel(
       )
   )
 )
-
+)
 
 ################################ MAP ################################# 
 
@@ -78,7 +78,7 @@ map <- tabPanel(
               interested in and the map will adjust the suicide rates according to the year chosen.
               Please keep in mind that this map was created using a data set that did not include the
               suicide rates for each country in the world for each year."), 
-      tags$h5(strong(em("Possible Questions:"))), 
+      tags$h5(strong(em("Possible Questions You Could Ask About the Dataset:"))), 
         tags$ol(
           tags$li("There are some countries that seem to have zero rates of suicide. 
                   Why do you think that is?"), 
@@ -109,11 +109,28 @@ generation <-  tabPanel(
     ),
     # Main Panel to Show Scatter Plot
     mainPanel(
-      plotlyOutput("generation")
+      plotlyOutput("generation"), 
+      tags$p("This is a visualization of a bar chart detailing generations
+             and their suicide rate. You can select a specific country on
+             the left, as well as the year for that country.
+             Note that not all years will have data on all generations
+             as they have not been born yet. Additionally, not all countries
+             have years for all the data, adn this is represented by empty graphs."),
+      tags$p(strong("To use this map:"), "Look at the side panel on the top left side
+             of the page. You can select the country of interest with the",
+             strong("country"), "dropdown menu. You can also select the year of interst with the",
+             strong("year"), "slider bar. Hover above the bar to know how many suicides occured 
+             for inputs selected."),
+      tags$h5(strong(em("Possible Questions You Could Ask About the Dataset:"))), 
+      tags$ol(
+        tags$li("Which country has largest number of suicides for all generations?"), 
+        tags$li("Why would some generations have larger rates of suicides for certain years?"), 
+        tags$li("Are there social or economic factors that might cause suicides to be more common 
+                in some generations than others?")
     )
   )
 )
-
+)
 
 
 ############################### Gender ############################### 
@@ -139,7 +156,48 @@ scatter <- tabPanel(
 
 ############################## About Us ##############################
 
-#about_us <- tabPanel()
+about_project <- tabPanel(
+  "About the Project",
+  tags$h3(strong("About US"), align = "center"), 
+  tags$h4("This report was created by the students in INFO 201 at the 
+           University of Washington. It was created by", strong("Alvine Ngouonga, 
+                                                                Bryce Fukuda, 
+                                                                Macey Schallert, 
+                                                                and Steven Hsieh."), align = "center"), 
+  sidebarPanel(
+    tags$h4(strong("Alvine Ngouonga"), align = "middle"), 
+    tags$img(src = "http://tinyurl.com/y6grzsc6", height = "200 px", 
+             style="display: block; margin-left: auto; margin-right: auto;"),
+    tags$p("Alvine Ngouonga is a Sophomore at the University of Washington studying Medical 
+           Anthropology and Global Health. She is minoring in Informatics and Bioethics and hopes 
+           to pursue a career in medicine and/or Global Health to study women's reproductive health.")
+  ),
+  sidebarPanel(
+    tags$h4(strong("Bryce Fukuda"), align = "center"),
+    tags$img(src = "http://tinyurl.com/yylsa9cx", height = "200 px", 
+             style="display: block; margin-left: auto; margin-right: auto;"),
+    tags$p("Bryce Fukuda is a Senior at the Univesity of Washington Studying Molecular, Cellular, and
+           Developmental Biology. He hopes to utilize the skillsets learned in R to analyze biological
+           datasets and potential future projects.")
+  ), 
+  sidebarPanel(
+    tags$h4(strong("Macey Schallert"), align = "center"),
+    tags$img(src = "http://tinyurl.com/y6bbhkoo", height = "200 px", 
+             style="display: block; margin-left: auto; margin-right: auto;"),
+    tags$p("Macey Schallert is a Junior at the University of Washington studying Psychology and Anthropology. 
+           She intends to apply R programming to psychology research in a clinical psychology.")
+  ), 
+  sidebarPanel(
+    tags$h4(strong("Steven Hsieh"), align = "center"),
+    tags$img(src = "http://tinyurl.com/y2m2n76j", height = "200 px", 
+             style="display: block; margin-left: auto; margin-right: auto;"),
+    tags$p("Steven Hsieh is a Junior at the University of Washington studying Finance. With R, he wishes to make pretty 
+           graphs and cool visualizations thta also show infomation in a meaningful way.")
+  )
+  )
+  
+
+
 
 ############################## Shiny UI ##############################
 
@@ -150,8 +208,9 @@ shinyUI(navbarPage(
   introduction, 
   map,
   generation,
-  scatter
-  # about_us
+  scatter,
+  about_project
 ))
+
 
 

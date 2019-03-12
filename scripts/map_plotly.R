@@ -1,9 +1,19 @@
 library(countrycode) # convert country names into codes
 library(tidyr)
+library(dplyr)
+
+#edit master dataset 
+
+master_data <- read.csv("./data/master.csv", stringsAsFactors = F)
+
+#rename column names 
+
+colnames(master_data)[1] <- "country"
 
 # Reder to map_dataset_make.R to see how the countries_list dataset was created
 
 # Making a map function, dataframe and year variable as parameters
+
 map_function <- function(df, year_var){
   countries_list <-  read.csv(
     "data/countries_list.csv", stringsAsFactors = F
@@ -11,11 +21,11 @@ map_function <- function(df, year_var){
   # make a dataset grouped by country and summing up suicides
   test <- df %>% 
     filter(year == year_var) %>% 
-    group_by(ï..country) %>% 
+    group_by(country) %>% 
     summarise(
       sum_suicide = sum(suicides_no)
     )
-  test$code <- countrycode(test$ï..country, 'country.name', 'iso3c')
+  test$code <- countrycode(test$country, 'country.name', 'iso3c')
   
   # join two datasets for combined data and all countries
   full_test <- countries_list %>%
@@ -57,4 +67,4 @@ map_function <- function(df, year_var){
   return(p)
 }
 
-map_function(data, 2000)
+

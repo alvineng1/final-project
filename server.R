@@ -13,7 +13,7 @@ shinyServer(function(input, output) {
   # map 
   output$plot <- renderPlotly({
     return(map_function(
-      data, input$years
+      master_data, input$years
     ))
   })
   # bar plot 
@@ -42,7 +42,7 @@ shinyServer(function(input, output) {
   #   p <- plot_ly(gdp_data(), x=~suicide_rate, y=~gdp_per_capita....)
   #   print(p)
   # })
-  # 
+   
 })
 
 
