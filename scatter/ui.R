@@ -1,20 +1,12 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
 
 library(shiny)
 
 shinyUI(navbarPage(
-  "ASDKFJALSKDJFLKSDJFLKSDJF",
+  "Economics and Suicide",
   # Creating tab panel
   tabPanel(
-    "ASDFKJ",
-    titlePanel("Something by generation"),
+    "",
+    titlePanel("Suicide Rates by GDP per Capita"),
     # Creating sidebar layout
     sidebarLayout(
       # Sidebar Panel
@@ -22,6 +14,12 @@ shinyUI(navbarPage(
         # Input to select country to map
         selectInput('country', "Select Country", country_list, selectize=TRUE)
       ),
+        # Input to checkbox for statistics
+        checkboxGroupInput("stats", label = h3("Choose What to Display"),
+                           choices = list("Line of Best Fit" = "", "P value" = "", "Correlation Coefficient" = ""),
+                           selected = "Line of Best Fit"
+      ),
+      
       mainPanel(
         plotlyOutput("scatter")
       )

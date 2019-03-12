@@ -9,7 +9,14 @@ shinyServer(function(input, output) ({
       filter(str_detect(country.year, input$country))
   })
   output$scatter <- renderPlotly({
-    p <- plot_ly(gdp_data(), x=~suicide_rate, y=~gdp_per_capita....)
+    p <- plot_ly(gdp_data(), x=~suicide_rate, y=~gdp_per_capita....) %>% 
+    add_lines(y = fitted(loess(suicide_rate ~ gdp_per_capita....)),
+              name = "Line of Best Fit") %>% 
+      add_ribbons(ymin = ~.fitted - 1.96 *.se.fit,
+                  ymax = ~.fitted + 1.96 * .se.fit,
+                  name = "Standard Error") %>% 
+      layout(xaxis = list(title = "Rate of Suicice(per 100k)"),
+             yaxis = list(title = "GDP per Capita")) %>% 
     print(p)
   })
 })
