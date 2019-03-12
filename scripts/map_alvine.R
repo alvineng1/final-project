@@ -3,6 +3,8 @@ library(dplyr)
 library(leaflet)
 library(ggplot2)
 library(ggmap)
+library(plotly)
+library(htmltools) # DO NOT NEED IF USING PLOTLY
 
 ################# prepwork for getting the geocodes ###################
 
