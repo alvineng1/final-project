@@ -1,5 +1,7 @@
 library(countrycode) # convert country names into codes
+library(tidyr)
 
+# Reder to map_dataset_make.R to see how the countries_list dataset was created
 
 # Making a map function, dataframe and year variable as parameters
 map_function <- function(df, year_var){
