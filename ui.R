@@ -137,26 +137,44 @@ map <- tabPanel(
 
 ############################### Scatter ############################### 
 
-scatter <- tabPanel(
-  "Scatter Plot",
-  titlePanel("Suicide Rates by GDP per Capita"),
-  # Creating sidebar layout
-  sidebarLayout(
-    # Sidebar Panel
-    sidebarPanel(
-      # Input to select country to map
-      selectInput(
-        inputId = "country", 
-        label = "Select Country", 
-        choices = select_values, 
-        selected = "China"
-      )
-    ),
-    mainPanel(
-      plotlyOutput("scatter")
-    )
-  )
-)
+ scatter <- tabPanel(
+   "Scatter Plot",
+   titlePanel("Suicide Rates by GDP per Capita"),
+   # Creating sidebar layout
+   sidebarLayout(
+     # Sidebar Panel
+     sidebarPanel(
+       # Input to select country to map
+       selectInput(
+         inputId = "country", 
+         label = "Select Country", 
+         choices = select_values, 
+         selected = "China"
+       )
+     ),
+     mainPanel(
+       tags$h4(strong("Suicide Scatter Plot"), align = "center"),
+       plotlyOutput("scatter"), 
+       tags$tav, 
+       tags$p("This scatter plot shows the trend of suicides in each country in our dataset from 1985-2016 (in respect to gdp).
+              In total, there are 2321 countries from this data set that are graphed on the plot. Keep in mind 
+              that some countries do not have rates of suicides for certain years, and not all of the 
+              countries in the world are represented in this data set as well."),
+       tags$p(strong("To use this map:"), "Look at the side panel on the top left side 
+              of the page. You can select the country of interest with the",
+              strong("country"), "dropdown menu. Once you select the country, the scatter plot will display
+              the information for suicide rates from 1985-2016 for that specific country."), 
+       tags$h5(strong(em("Possible Questions You Could Ask About the Plot:"))), 
+       tags$ol(
+         tags$li("Which countries had a decrease or increase in suicides?"), 
+         tags$li("Are there any countries that have a direct correlation between suicides and gdp?"), 
+         tags$li("Are there social or economic factors that might cause suicides to be more common 
+                 in some countries and not in others?")
+         )
+       )
+       )
+     )
+ 
 
 
 
