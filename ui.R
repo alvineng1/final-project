@@ -18,7 +18,7 @@ introduction <- tabPanel(
       a lifetime, but mainly impacts 15-29 year olds globally in 2016. 
       As a non discriminatory issue, it impacts both low and high income countries, 
       which is why it is such a huge public health concern."),
-    tags$h4(strong("Information about the Dataset"), 
+    tags$h4(strong("Information about the Dataset")), 
     tags$p("The information was collected by russellyates88, 
             and sourced by the World Bank. The dataset is hosted on Kaggle. The 
             data set is targeted towards indivals who have an interest in global
@@ -50,7 +50,7 @@ introduction <- tabPanel(
       )
   )
 )
-)
+
 
 ################################ MAP ################################# 
 
@@ -69,7 +69,7 @@ map <- tabPanel(
       
     ),
     mainPanel(
-      tags$h3(strong("Map of Suicides: 1985-2016"), align = "center"), 
+      tags$h3(strong("Map of Suicides"), align = "center"), 
       plotlyOutput("plot"),
       tags$tav, 
       tags$p("This map shows the amount of suicides from different countries around
