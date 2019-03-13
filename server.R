@@ -9,7 +9,6 @@ source("./scripts/map_plotly.R")
 source("./scripts/scatter-function.R")
 source("./generation/generation/server.R", local = TRUE)
 source("ui.R")
-# source("./scatter/server.R")
 
 
 shinyServer(function(input, output) {

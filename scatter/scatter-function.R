@@ -1,6 +1,7 @@
 library(stringr)
 library(dplyr)
 library(plotly)
+library(ggplot2)
 
 # Load in data as "master"
 master <- read.csv("./data/master.csv", stringsAsFactors = F, fileEncoding="UTF-8-BOM")
@@ -38,5 +39,4 @@ scatter_plot <- function(df, country_var) {
   return(p)
 }
 
-
-
+scatter_plot(master, "China")

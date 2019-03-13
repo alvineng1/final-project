@@ -40,7 +40,8 @@ introduction <- tabPanel(
            country from 1985 to 2016. 
            The second page shows a generational bar plot of suicides per country and per year. 
            Users can select the country and the year and see how many suicides occured per in each
-           generation. The third plot is a scatter plot **********"),
+           generation. The third plot is a scatter plot that looks at the changes in suicide vs gpd 
+           for each country from 1985 to 2016."),
     tags$h4(strong("Creators")), 
       tags$ol(
         tags$li("Bryce Fukada"), 
