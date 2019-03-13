@@ -7,7 +7,7 @@ library(stringr)
 
 source("./scripts/map_plotly.R")
 source("./scripts/scatter-function.R")
-source("./generation/generation/server.R")
+source("./generation/generation/server.R", local = TRUE)
 source("ui.R")
 # source("./scatter/server.R")
 
@@ -19,17 +19,11 @@ shinyServer(function(input, output) {
       master_data, input$years
     ))
   })
-  # bar plot 
-  country_plot <- reactive ({master %>% 
-      filter(year == input$slider_year, country == input$text) %>% 
-      group_by(generation) %>% 
-      summarize (total_suicides = sum(suicides_no))
-  })
   
+  # bar plot
 output$generation <- renderPlotly({
     country_year_filter <- master %>% 
       filter(year == input$slider_year, country == input$country_text_name)
-    
     
     by_females <- country_year_filter %>% 
       filter(sex == "female") %>% 
@@ -54,7 +48,7 @@ output$generation <- renderPlotly({
                             input$slider_year))
     if (input$gender_checkbox != TRUE) {
       p <- plot_ly(by_sex(), x=~generation, y=~total_suicides,
-                   name = "Male Suicides",
+                   name = "Total Suicides",
                    type = "bar") %>% 
         layout(title = paste0("Suicides in ", input$country_text_name, ", ", 
                               input$slider_year), 
@@ -64,29 +58,12 @@ output$generation <- renderPlotly({
     
     print(p)
    })
-   scatter 
+  # scatter 
   output$scatter <- renderPlotly({
     return(scatter_plot(scatter_data, input$country))
   })
 })
 
-
-
-# year_filter <- function(select_year){
-#   year_df <- master %>% 
-#   filter(year == select_year)
-#   return(year_df)
-# }
-# 
-# year_filter(2000)
-# 
-# test <- function(df, select_year){
-#   year_df <- df %>% 
-#     filter(year == select_year)
-# }
-# 
-# 
-# test(master, 2000)
 
 
 

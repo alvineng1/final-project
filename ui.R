@@ -109,7 +109,7 @@ map <- tabPanel(
                    max = 2016, value = 2000, sep = ""),
        checkboxInput("gender_checkbox", label = "Show Sex", value = TRUE)
      ),
-     # Main Panel to Show Scatter Plot
+     # Main Panel to Show Bar Plot
      mainPanel(
        plotlyOutput("generation"), 
        tags$p("This is a visualization of a bar chart detailing generations
@@ -135,7 +135,7 @@ map <- tabPanel(
  )
 
 
-############################### Gender ############################### 
+############################### Scatter ############################### 
 
 scatter <- tabPanel(
   "Scatter Plot",
@@ -198,7 +198,7 @@ about_project <- tabPanel(
     tags$img(src = "http://tinyurl.com/y2m2n76j", height = "200 px", 
              style="display: block; margin-left: auto; margin-right: auto;"),
     tags$p("Steven Hsieh is a Junior at the University of Washington studying Finance. With R, he wishes to make pretty 
-           graphs and cool visualizations thta also show infomation in a meaningful way.")
+           graphs and cool visualizations that also show infomation in a meaningful way.")
   )
   )
   

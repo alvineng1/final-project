@@ -2,7 +2,6 @@ library(shiny)
 library(dplyr)
 library(plotly)
 
-
 colnames(master)[1] <- "country"
 
 country_dataset <- master %>% 

@@ -4,11 +4,18 @@ library(dplyr)
 
 #edit master dataset 
 
-master_data <- read.csv("./data/master.csv", stringsAsFactors = F)
+master_data <- read.csv("./data/master.csv", stringsAsFactors = F, 
+                        fileEncoding = "UTF-8-BOM")
 
 #rename column names 
 
 colnames(master_data)[1] <- "country"
+
+country_dataset <- master_data %>% 
+  select(country) %>% 
+  distinct(country)
+
+country_list <- as.list(country_dataset)
 
 # Reder to map_dataset_make.R to see how the countries_list dataset was created
 
