@@ -4,51 +4,59 @@ library(dplyr)
 library(tidyr)
 library(stringr)
 
-shinyServer(function(input, output) ({
-  gdp_data <- reactive({good %>% 
-      filter(str_detect(country.year, input$country))
-  })
-  output$scatter <- renderPlotly({
-    p <- plot_ly(gdp_data(), x=~suicide_rate, y=~gdp_per_capita....) %>% 
-    add_lines(y = fitted(loess(suicide_rate ~ gdp_per_capita....)),
-              name = "Line of Best Fit") %>% 
-      add_ribbons(ymin = ~.fitted - 1.96 *.se.fit,
-                  ymax = ~.fitted + 1.96 * .se.fit,
-                  name = "Standard Error") %>% 
-      layout(xaxis = list(title = "Rate of Suicice(per 100k)"),
-             yaxis = list(title = "GDP per Capita")) %>% 
-    print(p)
-  })
+source("./scatter/scatter-function.R")
+source("./scatter/ui.R")
+
+
+
+shinyServer(function(input, output)({
+ output$scatter <- renderPlotly({
+   return(scatter_plot(scatter_data, input$country))
+ }) 
 })
 )
 
-scatter <- master %>% 
-  group_by(year) %>% 
-  select(country, year, suicides_no, gdp_per_capita....)
 
-gdp_plot <- plot_ly(data = master, x = ~suicides_no, y= ~gdp_per_capita....)
+# # Load in data as "master"
+# master <- read.csv("data/master.csv", stringsAsFactors = F)
+# 
+# #Shiny Function
+# shinyServer(function(input, output) ({
+#   
+#   # Make dataframe grouped by country&year, taking total suicides and population
+#   suicide_and_pop <- master %>% 
+#     group_by(country.year) %>% 
+#     summarise(total_suicides = sum(suicides_no), total_pop = sum(population))
+#   
+#   # Make dataframe getting country&year and gdp per capita
+#   gdp_raw <- master %>% 
+#     select(country.year, gdp_per_capita....)
+#   
+#   gdp_shortened <- distinct(gdp_raw)
+#   
+#   
+#   # Combine two dataframes to include countries&years, total suicides, and gdp per capita
+#   # join by country.year
+#   scatter_data <- left_join(suicide_and_pop, gdp_shortened)
+#   
+#   # Calculate suicide rate
+#   scatter_data <- scatter_data %>%
+#     mutate(suicide_per_100k = (total_suicides / total_pop)*100000)
+#   gdp_data <- reactive({scatter_data %>% 
+#       filter(str_detect(country.year, input$country))
+#   })
+#   p <- plot_ly(data = scatter_data, x = ~suicide_per_100k) %>%
+#     add_markers(y = ~gdp_per_capita...., showlegend = FALSE) %>%
+#     add_lines(y = ~fitted(loess(gdp_per_capita.... ~ suicide_per_100k)),
+#               name = "Line of Best Fit",
+#               showlegend = T) %>%
+#     layout(xaxis = list(title = "Rate of Suicice(per 100k)"),
+#            yaxis = list(title = "GDP per Capita"))
+# 
+# })
+# )
+# 
+# 
 
-scatter <- master %>% 
-  group_by(country.year) %>% 
-  summarise(total_suicides = sum(suicides_no), total_pop = sum(population))
-
-test1 <- master %>% 
-  select(country.year, gdp_per_capita....)
-
-test2 <- distinct(test1)
-
-test3 <- left_join(scatter, test2)
   
-good <- test3 %>% 
-  mutate(suicide_rate = (total_suicides / total_pop)*100000)
 
-plot_ly(data = test4, x=~suicide_rate, y=~gdp_per_capita....)
-
-asdf <- test4 %>% 
-  filter(str_detect(country.year, ""))
-
-country_dataset <- master %>% 
-  select(country) %>% 
-  distinct(country)
-  
-country_list <- as.list(country_dataset)

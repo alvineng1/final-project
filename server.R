@@ -2,8 +2,11 @@ library(dplyr)
 library(leaflet)
 library(ggplot2)
 library(shiny)
+library(tidyr)
+library(stringr)
 
 source("./scripts/map_plotly.R")
+source("./scripts/scatter-function.R")
 source("./generation/generation/server.R")
 source("ui.R")
 # source("./scatter/server.R")
@@ -23,26 +26,21 @@ shinyServer(function(input, output) {
       summarize (total_suicides = sum(suicides_no))
   })
   
-  output$generation <- renderPlotly({
-    
-    p <- plot_ly(country_plot(), x=~generation, y=~total_suicides,
-                 name = "Male Suicides",
-                 type = "bar") %>% 
-      layout(title = paste0("Suicides in ", input$text, ", ", 
-                            input$slider_year), 
-             xaxis = list(title = "Generation"),
-             yaxis = list(title = "Total Suicides"))
-    print(p)
-  })
-  # scatter 
-  # gdp_data <- reactive({good %>% 
-  #     filter(str_detect(country.year, input$country))
-  # })
-  # output$scatter <- renderPlotly({
-  #   p <- plot_ly(gdp_data(), x=~suicide_rate, y=~gdp_per_capita....)
+  # output$generation <- renderPlotly({
+  #   
+  #   p <- plot_ly(country_plot(), x=~generation, y=~total_suicides,
+  #                name = "Male Suicides",
+  #                type = "bar") %>% 
+  #     layout(title = paste0("Suicides in ", input$text, ", ", 
+  #                           input$slider_year), 
+  #            xaxis = list(title = "Generation"),
+  #            yaxis = list(title = "Total Suicides"))
   #   print(p)
   # })
-   
+  # scatter 
+  output$scatter <- renderPlotly({
+    return(scatter_plot(scatter_data, input$country))
+  })
 })
 
 

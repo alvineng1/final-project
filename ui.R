@@ -3,8 +3,9 @@ library(ggplot2)
 library(shiny)
 library(dplyr)
 library(shinythemes)
+library(plotly)
 
-
+source("scripts/scatter-function.R")
 
 ############################ Introduction ############################ 
 introduction <- tabPanel(
@@ -94,63 +95,67 @@ map <- tabPanel(
 
 
 ############################# Generation ############################# 
-
-generation <-  tabPanel(
-  "Generation",
-  titlePanel("Generation Plot"),
-  # Creating sidebar layout
-  sidebarLayout(
-    # Sidebar Panel
-    sidebarPanel(
-      # Input to select variable to map
-      selectInput('text', "Select Country", country_list, selectize=TRUE),
-      sliderInput("slider_year", label = h3("Select Year"), min = 1985, 
-                  max = 2016, value = 2000, sep = "")
-    ),
-    # Main Panel to Show Scatter Plot
-    mainPanel(
-      plotlyOutput("generation"), 
-      tags$p("This is a visualization of a bar chart detailing generations
-             and their suicide rate. You can select a specific country on
-             the left, as well as the year for that country.
-             Note that not all years will have data on all generations
-             as they have not been born yet. Additionally, not all countries
-             have years for all the data, adn this is represented by empty graphs."),
-      tags$p(strong("To use this map:"), "Look at the side panel on the top left side
-             of the page. You can select the country of interest with the",
-             strong("country"), "dropdown menu. You can also select the year of interst with the",
-             strong("year"), "slider bar. Hover above the bar to know how many suicides occured 
-             for inputs selected."),
-      tags$h5(strong(em("Possible Questions You Could Ask About the Dataset:"))), 
-      tags$ol(
-        tags$li("Which country has largest number of suicides for all generations?"), 
-        tags$li("Why would some generations have larger rates of suicides for certain years?"), 
-        tags$li("Are there social or economic factors that might cause suicides to be more common 
-                in some generations than others?")
-    )
-  )
-)
-)
+# 
+# generation <-  tabPanel(
+#   "Generation",
+#   titlePanel("Generation Plot"),
+#   # Creating sidebar layout
+#   sidebarLayout(
+#     # Sidebar Panel
+#     sidebarPanel(
+#       # Input to select variable to map
+#       selectInput('text', "Select Country", country_list, selectize=TRUE),
+#       sliderInput("slider_year", label = h3("Select Year"), min = 1985, 
+#                   max = 2016, value = 2000, sep = "")
+#     ),
+#     # Main Panel to Show Scatter Plot
+#     mainPanel(
+#       plotlyOutput("generation"), 
+#       tags$p("This is a visualization of a bar chart detailing generations
+#              and their suicide rate. You can select a specific country on
+#              the left, as well as the year for that country.
+#              Note that not all years will have data on all generations
+#              as they have not been born yet. Additionally, not all countries
+#              have years for all the data, adn this is represented by empty graphs."),
+#       tags$p(strong("To use this map:"), "Look at the side panel on the top left side
+#              of the page. You can select the country of interest with the",
+#              strong("country"), "dropdown menu. You can also select the year of interst with the",
+#              strong("year"), "slider bar. Hover above the bar to know how many suicides occured 
+#              for inputs selected."),
+#       tags$h5(strong(em("Possible Questions You Could Ask About the Dataset:"))), 
+#       tags$ol(
+#         tags$li("Which country has largest number of suicides for all generations?"), 
+#         tags$li("Why would some generations have larger rates of suicides for certain years?"), 
+#         tags$li("Are there social or economic factors that might cause suicides to be more common 
+#                 in some generations than others?")
+#     )
+#   )
+# )
+# )
 
 
 ############################### Gender ############################### 
 
 scatter <- tabPanel(
-  "Economics",
-  titlePanel("Scatter plot generation"),
+  "Scatter Plot",
+  titlePanel("Suicide Rates by GDP per Capita"),
   # Creating sidebar layout
   sidebarLayout(
     # Sidebar Panel
     sidebarPanel(
       # Input to select country to map
-      selectInput('country', "Select Country", country_list, selectize=TRUE)
+      selectInput(
+        inputId = "country", 
+        label = "Select Country", 
+        choices = select_values, 
+        selected = "China"
+      )
     ),
     mainPanel(
       plotlyOutput("scatter")
     )
   )
 )
-
 
 
 
@@ -207,7 +212,7 @@ shinyUI(navbarPage(
   "Suicides Around the World",
   introduction, 
   map,
-  generation,
+  # generation,
   scatter,
   about_project
 ))
