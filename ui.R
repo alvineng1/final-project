@@ -12,11 +12,11 @@ introduction <- tabPanel(
   "Introduction", 
   mainPanel(
     tags$h4(strong("Information about Suicide")), 
-    tags$p("According to the WHO, close to 800,000 people die due to 
-      suicide each year. Suicide drastically impacts families, communities,
-      and the people who also commit suicides. Suicide can occur throughout 
-      a lifetime, but mainly impacts 15-29 year olds globally in 2016. 
-      As a non discriminatory issue, it impacts both low and high income countries, 
+    tags$p("According to the WHO, close to 800,000 people die from 
+      suicide each year. Suicide has a devastating and radiating effect on the 
+      families and communities impacted by suicide. Suicide can occur at any time 
+      in life, but mainly impacts 15-29 year olds globally. 
+      Suicide is nondiscriminatory, as it impacts both low and high income countries, 
       which is why it is such a huge public health concern."),
     tags$h4(strong("Information about the Dataset")), 
     tags$p("The information was collected by russellyates88, 
@@ -117,15 +117,15 @@ map <- tabPanel(
               the left, as well as the year for that country.
               Note that not all years will have data on all generations
               as they have not been born yet. Additionally, not all countries
-              have years for all the data, adn this is represented by empty graphs."),
+              have years for all the data, and this is represented by empty graphs."),
        tags$p(strong("To use this map:"), "Look at the side panel on the top left side
               of the page. You can select the country of interest with the",
-              strong("country"), "dropdown menu. You can also select the year of interst with the",
-              strong("year"), "slider bar. Hover above the bar to know how many suicides occured 
+              strong("country"), "dropdown menu. You can also select the year of interest with the",
+              strong("year"), "slider bar. Hover above the bar to know how many suicides occurred 
               for inputs selected."),
        tags$h5(strong(em("Possible Questions You Could Ask About the Dataset:"))), 
        tags$ol(
-         tags$li("Which country has largest number of suicides for all generations?"), 
+         tags$li("Which country has the largest number of suicides for all generations?"), 
          tags$li("Why would some generations have larger rates of suicides for certain years?"), 
          tags$li("Are there social or economic factors that might cause suicides to be more common 
                  in some generations than others?")
@@ -191,7 +191,8 @@ about_project <- tabPanel(
     tags$img(src = "http://tinyurl.com/y6bbhkoo", height = "200 px", 
              style="display: block; margin-left: auto; margin-right: auto;"),
     tags$p("Macey Schallert is a Junior at the University of Washington studying Psychology and Anthropology. 
-           She intends to apply R programming to psychology research in a clinical psychology.")
+           She intends to apply R programming to Psychology research in Clinical Psychology, specifically 
+           substance abuse research.")
   ), 
   sidebarPanel(
     tags$h4(strong("Steven Hsieh"), align = "center"),
