@@ -3,7 +3,12 @@ library(dplyr)
 library(plotly)
 
 # Load in data as "master"
-master <- read.csv("./data/master.csv", stringsAsFactors = F)
+master <- read.csv("./data/master.csv", stringsAsFactors = F, fileEncoding="UTF-8-BOM")
+
+#rename column names 
+
+colnames(master)[1] <- "country"
+
 
 # Make dataframe grouped by year, country, g, taking total suicides and population
 scatter_data <- master %>% 
