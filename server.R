@@ -22,22 +22,22 @@ shinyServer(function(input, output) {
   output$generation <- renderPlotly({
     country_year_filter <- master %>%
       filter(year == input$slider_year, country == input$country_text_name)
-
+  # filtering by females
     by_females <- country_year_filter %>%
       filter(sex == "female") %>%
       group_by(generation) %>%
       summarize(total_female_suicides = sum(suicides_no))
-
+  # filtering by males
     by_males <- country_year_filter %>%
       filter(sex == "male") %>%
       group_by(generation) %>%
       summarize(total_male_suicides = sum(suicides_no))
-
+  # joining by both sexes
     by_sex <- reactive({
       left_join(by_males, by_females) %>%
         mutate(total_suicides = (total_male_suicides + total_female_suicides))
     })
-
+  # creating plotly plot
     p <- plot_ly(by_sex(),
       x = ~generation, y = ~total_male_suicides,
       name = "Male Suicides",
@@ -52,6 +52,7 @@ shinyServer(function(input, output) {
           input$slider_year
         )
       )
+    # if statement for gender checkbox
     if (input$gender_checkbox != TRUE) {
       p <- plot_ly(by_sex(),
         x = ~generation, y = ~total_suicides,
