@@ -1,0 +1,12 @@
+name: final-project
+title: final-project
+username:
+account: hsiehsc
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 788998
+bundleId: 1938679
+url: https://hsiehsc.shinyapps.io/final-project/
+when: 1552546636.01024
+asMultiple: FALSE
+asStatic: FALSE
