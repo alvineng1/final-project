@@ -1,6 +1,8 @@
+# Load Relevent Libraries
 library(countrycode) # convert country names into codes
 library(tidyr)
 library(dplyr)
+library(plotly)
 
 # edit master dataset
 
@@ -19,7 +21,7 @@ country_dataset <- master_data %>%
 
 country_list <- as.list(country_dataset)
 
-# Reder to map_dataset_make.R to see how the countries_list dataset was created
+# Refer to map_dataset_make.R to see how the countries_list dataset was created
 
 # Making a map function, dataframe and year variable as parameters
 
@@ -42,8 +44,8 @@ map_function <- function(df, year_var) {
     full_join(test) %>%
     select(code, countries, sum_suicide)
 
+  # replace NA values with 0 (data unavailable)
 
-  # replace NA values with "data unavailable"
   full_test$sum_suicide[is.na(full_test$sum_suicide)] <- 0
 
 
