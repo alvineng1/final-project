@@ -15,18 +15,18 @@ introduction <- tabPanel(
     tags$p("According to the WHO, close to 800,000 people die from 
       suicide each year. Suicide has a devastating and radiating effect on the 
       families and communities impacted by suicide. Suicide can occur at any time 
-      in life, but mainly impacts 15-29 year olds globally. 
+      in life but mainly impacts 15-29-year-olds globally. 
       Suicide is nondiscriminatory, as it impacts both low and high income countries, 
       which is why it is such a huge public health concern."),
     tags$h4(strong("Information about the Dataset")), 
-    tags$p("The information was collected by russellyates88, 
-            and sourced by the World Bank. The dataset is hosted on Kaggle. The 
-            data set is targeted towards indivals who have an interest in global
-            and mental health. This data set can help provide numerical evidence to 
-            support research on mental health."), 
+    tags$p("The information was collected by",em("russellyates88"),"and sourced by 
+           the World Bank. The dataset was hosted on Kaggle and is targeted towards 
+           individuals who have an interest in global and mental health. This data set can help provide 
+           numerical evidence to support research on mental health."), 
     tags$h4(strong("Questions that can be asked")), 
     tags$p("The data set is 30,000 rows long and summarizes information by 
-            country, year, age group, generation, and GDP."), 
+            country, year, age group, generation, and GDP. Some of the questions that we 
+           attempt to answer with this data set include:"), 
       tags$ol( 
               tags$li("Which countries experience the highest rates of suicide?"), 
               tags$li("How do economic and development indicators link to suicide rates?"), 
@@ -39,7 +39,7 @@ introduction <- tabPanel(
            in each country. Users can change the year input to see how suicides vary in each 
            country from 1985 to 2016. 
            The second page shows a generational bar plot of suicides per country and per year. 
-           Users can select the country and the year and see how many suicides occured per in each
+           Users can select the country and the year and see how many suicides occurred per in each
            generation. The third plot is a scatter plot that looks at the changes in suicide vs gpd 
            for each country from 1985 to 2016."),
     tags$h4(strong("Creators")), 
@@ -65,7 +65,8 @@ map <- tabPanel(
         label = "Between two years:",
         min = 1985,
         max = 2016,
-        value = 1998
+        value = 1998, 
+        sep = ""
       )
       
     ),
@@ -73,9 +74,9 @@ map <- tabPanel(
       tags$h3(strong("Map of Suicides"), align = "center"), 
       plotlyOutput("plot"),
       tags$tav, 
-      tags$p("This map shows the amount of suicides from different countries around
+      tags$p("This map shows the number of suicides from different countries around
               the world from 1985 to 2016. The countries that are more pigmented are those
-              with the highst rates of suicide."), 
+              with the highest rates of suicide."), 
       tags$p(strong("To use this map:"), "use the slider to select the year that you are 
               interested in and the map will adjust the suicide rates according to the year chosen.
               Please keep in mind that this map was created using a data set that did not include the
@@ -157,7 +158,7 @@ map <- tabPanel(
        tags$h4(strong("Suicide Scatter Plot"), align = "center"),
        plotlyOutput("scatter"), 
        tags$tav, 
-       tags$p("This scatter plot shows the trend of suicides in each country in our dataset from 1985-2016 (in respect to gdp).
+       tags$p("This scatter plot shows the trend of suicides in each country in our dataset from 1985-2016 (with respect to gdp).
               In total, there are 2321 countries from this data set that are graphed on the plot. Keep in mind 
               that some countries do not have rates of suicides for certain years, and not all of the 
               countries in the world are represented in this data set as well."),
@@ -181,8 +182,8 @@ map <- tabPanel(
 
 ############################## About Us ##############################
 
-about_project <- tabPanel(
-  "About the Project",
+about_us <- tabPanel(
+  "Meet the Team",
   tags$h3(strong("About US"), align = "center"), 
   tags$h4("This report was created by the students in INFO 201 at the 
            University of Washington. It was created by", strong("Alvine Ngouonga, 
@@ -194,7 +195,7 @@ about_project <- tabPanel(
     tags$img(src = "http://tinyurl.com/y6grzsc6", height = "200 px", 
              style="display: block; margin-left: auto; margin-right: auto;"),
     tags$p("Alvine Ngouonga is a Sophomore at the University of Washington studying Medical 
-           Anthropology and Global Health. She is minoring in Informatics and Bioethics and hopes 
+           Anthropology and Global Health with a minor in Informatics and Bioethics. She hopes 
            to pursue a career in medicine and/or Global Health to study women's reproductive health.")
   ),
   sidebarPanel(
@@ -202,7 +203,7 @@ about_project <- tabPanel(
     tags$img(src = "http://tinyurl.com/yylsa9cx", height = "200 px", 
              style="display: block; margin-left: auto; margin-right: auto;"),
     tags$p("Bryce Fukuda is a Senior at the Univesity of Washington Studying Molecular, Cellular, and
-           Developmental Biology. He hopes to utilize the skillsets learned in R to analyze biological
+           Developmental Biology. He hopes to utilize the skill sets learned in R to analyze biological
            datasets and potential future projects.")
   ), 
   sidebarPanel(
@@ -218,7 +219,7 @@ about_project <- tabPanel(
     tags$img(src = "http://tinyurl.com/y2m2n76j", height = "200 px", 
              style="display: block; margin-left: auto; margin-right: auto;"),
     tags$p("Steven Hsieh is a Junior at the University of Washington studying Finance. With R, he wishes to make pretty 
-           graphs and cool visualizations that also show infomation in a meaningful way.")
+           graphs and cool visualizations that also show information in a meaningful way.")
   )
   )
   
@@ -235,7 +236,7 @@ shinyUI(navbarPage(
   map,
   generation,
   scatter,
-  about_project
+  about_us
 ))
 
 
