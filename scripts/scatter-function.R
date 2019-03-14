@@ -28,8 +28,10 @@ scatter_plot <- function(df, country_var) {
                 text = paste0(
                   "Year:", filtered_data$year
                 )) %>%
+    colorbar(title = "Economics and Suicide Rates") %>% 
     layout(xaxis = list(title = "Rate of Suicide(per 100k)"),
-           yaxis = list(title = "GDP per Capita"))
+           yaxis = list(title = "GDP per Capita"),
+           title = paste0("GDP and Suicide Rates in ", input$country))
   return(p)
 }
 
