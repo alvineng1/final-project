@@ -11,7 +11,7 @@ source("scripts/scatter-function.R")
 introduction <- tabPanel(
   "Introduction",
   mainPanel(
-    tags$h4(strong("Information about Suicide")), 
+    tags$h4(strong("Information about Suicide", style = "color: #93032E;")),
     tags$p("According to the WHO, close to 800,000 people die from
             suicide each year. Suicide has a devastating and
             radiating effect on the
@@ -21,7 +21,7 @@ introduction <- tabPanel(
             Suicide is nondiscriminatory, as it impacts both low
             and high income countries,
             which is why it is such a huge public health concern."),
-    tags$h4(strong("Information about the Dataset")),
+    tags$h4(strong("Information about the Dataset", style = "color: #93032E;")),
     tags$p(
       "The information was collected by",
       em("russellyates88"), "and sourced by
@@ -31,7 +31,11 @@ introduction <- tabPanel(
           mental health. This data set can help provide
           numerical evidence to support research on mental health."
     ),
-    tags$h4(strong("Questions that can be asked")),
+    tags$a(
+      href = "https://www.kaggle.com/russellyates88/suicide-rates-overview-1985-to-2016",
+      "You can find a link to the data by clicking here."
+    ),
+    tags$h4(strong("Questions that can be asked", style = "color: #93032E;")),
     tags$p("The data set is 30,000 rows long and summarizes information by
             country, year, age group, generation, and GDP.
             Some of the questions that we
@@ -46,7 +50,7 @@ introduction <- tabPanel(
                does this trend exist for?"),
       tags$li("Which years were suicide rates most prevalent?")
     ),
-    tags$h4(strong("Structure")),
+    tags$h4(strong("Structure", style = "color: #93032E;")),
     tags$p("The first tab of this report shows has a
             choropleth map of the number of suicides
             in each country. Users can change the year
@@ -59,13 +63,14 @@ introduction <- tabPanel(
             generation. The third plot is a scatter plot
             that looks at the changes in suicide vs gpd
             for each country from 1985 to 2016."),
-    tags$h4(strong("Creators")),
+    tags$h4(strong("Creators", style = "color: #93032E;")),
     tags$ol(
       tags$li("Bryce Fukada"),
       tags$li("Alvine Ngouonga"),
       tags$li("Steven Hsieh"),
       tags$li("Macey Schallert")
-    )
+    ),
+    tags$p("March 14th, 2019")
   )
 )
 
@@ -103,7 +108,9 @@ map <- tabPanel(
               that did not include the
               suicide rates for each country in the world for each year."),
       tags$h5(strong
-      (em("Possible Questions You Could Ask About the Dataset:"))),
+      (em("Possible Questions You Could Ask About the Dataset:",
+          style = "color: #034C3C;"
+      ))),
       tags$ol(
         tags$li("There are some countries that seem
                  to have zero rates of suicide.
@@ -115,12 +122,19 @@ map <- tabPanel(
                 in some countries and not in others?")
       ),
       tags$h5(
-        strong("Insights:")), 
-      tags$p("Overall, We noticed that certain countries like the", strong("United States"),
-             "had relatively high rates of suicide throughout the time period of 1985 to 2016.
-             Other countries like", strong("Russia"), "started having high suicide rates around 
-             1989, and the suicide rates in Russia stayed comparable with that of the United States
-             from 1989 to 2015.")
+        strong("Insights:", style = "color: #84894A;")
+      ),
+      tags$p(
+        "Overall, We noticed that certain countries like the",
+        strong("United States"),
+        "had relatively high rates of suicide throughout the time period
+              of 1985 to 2016.
+              Other countries like", strong("Russia"), "started having high
+              suicide rates around
+              1989, and the suicide rates in Russia stayed comparable with
+              that of the United States
+              from 1989 to 2015."
+      )
     )
   )
 )
@@ -168,7 +182,9 @@ generation <- tabPanel(
                          for inputs selected."
       ),
       tags$h5(strong(
-        em("Possible Questions You Could Ask About the Dataset:")
+        em("Possible Questions You Could Ask About the Dataset:",
+          style = "color: #034C3C;"
+        )
       )),
       tags$ol(
         tags$li("Which country has the largest number of suicides for all
@@ -178,23 +194,26 @@ generation <- tabPanel(
         tags$li("Are there social or economic factors that might cause suicides
                  to be more common
                  in some generations than others?")
-      ), 
+      ),
       tags$h5(
-        strong("Insights:")), 
+        strong("Insights:", style = "color: #84894A;")
+      ),
       tags$ol(
         tags$li(
-          "Males vastly outnumber females, 
-          often at a ratio of 4 males to every one female"), 
+          "Males vastly outnumber females,
+          often at a ratio of 4 males to every one female"
+        ),
         tags$li(
-          "Boomers maintain a high rate of suicide for most of the years 
-          until the most recent ones. This might be related to the boomers 
-          being affected the most by economic downturns which could cause 
+          "Boomers maintain a high rate of suicide for most of the years
+          until the most recent ones. This might be related to the boomers
+          being affected the most by economic downturns which could cause
           an increase in suicide rates."
-        ), 
+        ),
         tags$li(
-          "Millennial have the lowest rates of suicide. They're also the youngest, 
-          However, Millennial suicides are beginning to increase. This might be due 
-          to the influence of social media and changing perceptions of success"
+          "Millennial have the lowest rates of suicide. They're also the
+           youngest, However, Millennial suicides are beginning to increase.
+           This might be due
+           to the influence of social media and changing perceptions of success"
         )
       )
     )
@@ -240,7 +259,9 @@ scatter <- tabPanel(
               the information for suicide rates from 1985-2016 for that
               specific country."
       ),
-      tags$h5(strong(em("Possible Questions You Could Ask About the Plot:"))),
+      tags$h5(strong(em("Possible Questions You Could Ask About the Plot:",
+        style = "color: #034C3C;"
+      ))),
       tags$ol(
         tags$li("Which countries had a decrease or increase in suicides?"),
         tags$li("Are there any countries that have a direct correlation
@@ -248,17 +269,20 @@ scatter <- tabPanel(
         tags$li("Are there social or economic factors that might cause
                  suicides to be more common
                  in some countries and not in others?")
-      ), 
+      ),
       tags$h5(
-        strong("Insights:")),
-      tags$p("The general trend seems to be split depending on the country. 
-             For some countries, like Brazil and Chile, as GDP goes up, so 
-             do suicide rates- resulting in a positive correlation. For countries 
-             like France, Italy, and the United Kingdom, a negative correlation 
-             occurs where GDP decreases, suicide rates increase. It is interesting 
-             to note the unique trend line of the United States: a GDP above and below 
-             a certain amount results in higher suicide rates, but if the GDP falls 
-             within the median range, suicide rates stay on the lower end of the scale.")
+        strong("Insights:", style = "color: #84894A;")
+      ),
+      tags$p("The general trend seems to be split depending on the country.
+             For some countries, like Brazil and Chile, as GDP goes up, so
+             do suicide rates- resulting in a positive correlation.
+             For countries like France, Italy, and the United Kingdom,
+             a negative correlation occurs where GDP decreases,
+             suicide rates increase. It is interesting to note the unique trend
+             line of the United States: a GDP above and below a certain amount
+             results in higher suicide rates, but if the GDP falls
+             within the median range, suicide rates stay on the lower
+             end of the scale.")
     )
   )
 )
@@ -271,12 +295,14 @@ scatter <- tabPanel(
 about_us <- tabPanel(
   "Meet the Team",
   headerPanel(
-    h4("About Us", 
-       style = "font-family: 'Arial';cursive;
+    h4("About Us",
+      style = "font-family: 'Arial';cursive;
          font-size: 25px; line-height: 1.0:
          color: #36454f;
          text-align: center;
-         font-weight: 300;")),
+         font-weight: 300;"
+    )
+  ),
   tags$h4("This report was created by the students in INFO 201 at the
            University of Washington. It was created by",
     strong("Alvine Ngouonga,
@@ -335,24 +361,6 @@ about_us <- tabPanel(
   )
 )
 
-############################## links ##############################
-# links <- tabPanel(
-#   "Links and Resources",
-#   headerPanel(
-#     h4("Links Resources", 
-#        style = "font-family: 'Arial';cursive;
-#        font-size: 25px; line-height: 1.0:
-#        color: #36454f;
-#        text-align: center;
-#        font-weight: 300;")), 
-#   headerPanel(
-#     h4("Kaggle", 
-#        style = "font-family: 'Arial';cursive;
-#        font-size: 20px; line-height: 1.0:
-#        color: #36454f;
-#        text-align: center;
-#        font-weight: 300;"))
-#   )
 
 ############################## Shiny UI ##############################
 
@@ -364,7 +372,6 @@ shinyUI(navbarPage(
   generation,
   scatter,
   about_us
-  # links
 ))
 
 
