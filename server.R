@@ -75,4 +75,10 @@ shinyServer(function(input, output) {
   output$scatter <- renderPlotly({
     return(scatter_plot(scatter_data, input$country))
   })
+  
+  #second scatter 
+  output$new <- renderPlotly({
+    return(new(scatter_data, input$country))
+  })
+  
 })

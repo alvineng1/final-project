@@ -12,6 +12,7 @@ introduction <- tabPanel(
   "Introduction",
   mainPanel(
     tags$h4(strong("Information about Suicide", style = "color: #93032E;")),
+    tags$h6(em("March 14th, 2019")),
     tags$p("According to the WHO, close to 800,000 people die from
             suicide each year. Suicide has a devastating and
             radiating effect on the
@@ -69,8 +70,7 @@ introduction <- tabPanel(
       tags$li("Alvine Ngouonga"),
       tags$li("Steven Hsieh"),
       tags$li("Macey Schallert")
-    ),
-    tags$p("March 14th, 2019")
+    )
   )
 )
 
@@ -282,9 +282,29 @@ scatter <- tabPanel(
              line of the United States: a GDP above and below a certain amount
              results in higher suicide rates, but if the GDP falls
              within the median range, suicide rates stay on the lower
-             end of the scale.")
+             end of the scale."),
+      tags$br(),
+      plotlyOutput("new"),
+      tags$p("This scatter plot shows a more detailed view of suicide rates over
+              time for each country. The x axis
+              has the year and the y axis depicts the rate of suicide per
+              100K."),
+      tags$p(strong("To use this scatter plot:"), "Look at the side panel on
+            the top left side of the page.
+            You can select the country of interest with
+            the", strong("country"), "dropdown menu. Once you select the
+            country, the scatter plot will display the information for suicide
+            rates from 1985-2016 of that country."),
+      tags$h5(strong(em("Possible Questions You Could Ask About the Plot:"))),
+      tags$ol(
+        tags$li("Why do some countries have a decrease in suicide rates
+                over time?"),
+        tags$li("Are there social or economic factors that might cause
+                  suicides to be more common
+                 in some countries and not in others?")
     )
   )
+)
 )
 
 
