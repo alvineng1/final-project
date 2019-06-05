@@ -100,7 +100,8 @@ map <- tabPanel(
               the world from 1985 to 2016. The countries
               that are more pigmented are those
               with the highest rates of suicide."),
-      tags$p(strong("To use this map:"), "use the slider to
+      tags$p(strong("To use this map:",
+                    style = "color: #034C3C;"), "use the slider to
                                           select the year that you are
                         interested in and the map will adjust the suicide rates
                         according to the year chosen.

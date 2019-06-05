@@ -12,14 +12,7 @@ source("ui.R")
 
 shinyServer(function(input, output) {
   # map
-  output$plot <- renderPlotly({
-    return(map_function(
-      master_data, input$years
-    ))
-  })
-
-  # bar plot
-  output$generation <- renderPlotly({
+  output$map <- renderPlotly({
     country_year_filter <- master %>%
       filter(year == input$slider_year, country == input$country_text_name)
   # filtering by females
@@ -75,10 +68,10 @@ shinyServer(function(input, output) {
   output$scatter <- renderPlotly({
     return(scatter_plot(scatter_data, input$country))
   })
-  
-  #second scatter 
+
+  #second scatter
   output$new <- renderPlotly({
     return(new(scatter_data, input$country))
   })
-  
+
 })
